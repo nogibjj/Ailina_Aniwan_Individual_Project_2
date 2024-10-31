@@ -1,5 +1,21 @@
-name,age
-Alice,30
-Bob,25
-Charlie,35
-Diana,28
+name,age,city
+Alice,30,New York
+Bob,25,Los Angeles
+Charlie,35,Chicago
+Diana,28,Houston
+Edward,40,Phoenix
+Fiona,32,Philadelphia
+George,27,San Antonio
+Hannah,29,San Diego
+Ian,34,Dallas
+Julia,31,San Jose
+Kevin,26,Austin
+Laura,33,Jacksonville
+Mark,38,San Francisco
+Nina,24,Columbus
+Oliver,37,Fort Worth
+Paula,36,Indianapolis
+Quincy,39,Charlotte
+Rachel,28,Seattle
+Steve,29,Denver
+Tina,27,Washington

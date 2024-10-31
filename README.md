@@ -1,15 +1,26 @@
 [![CI](https://github.com/nogibjj/Ailina_Aniwan_Mini_Project_7/actions/workflows/CI.yml/badge.svg)](https://github.com/nogibjj/Ailina_Aniwan_Mini_Project_7/actions/workflows/CI.yml)
-# IDS706 - Mini Project 7 - Ailina Aniwan
+# IDS706 - Individual Project 2 - Ailina Aniwan
 
-## Package a Command-Line Tool in Rust
+## Rust CLI Binary with SQLite
 
 ## ✔️ Project Overview
-This project is a Rust-based command-line tool for performing basic SQL operations (Create, Read, Load, and Delete) on a SQLite database. It provides a straightforward CLI interface, allowing users to manage tables and data through simple commands. The tool leverages Rust’s `clap` library for command-line argument parsing, `rusqlite` for database interaction, and `csv` for data loading.
+This project is a Rust-based command-line tool for performing SQL operations (Create, Read, Update, Delete) on a SQLite database. It allows users to manage tables and interact with data through simple CLI commands. The project leverages Rust's `clap` library for command-line argument parsing, `rusqlite` for database interaction, and `csv` for data loading.
 
 ## ✔️ Project Requirements
-- Package a Python script with setuptools or a similar tool (We opted for Rust).
-- Include communication with an external or internal database (SQLite in this case).
-- Provide functionality and user guidance.
+- **Rust source code:** The code should comprehensively understand Rust's syntax and unique features.
+- **Use of GitHub Copilot:** In your README, explain how you utilized GitHub Copilot in your coding process.
+- **SQLite Database:** Include a SQLite database and demonstrate CRUD (Create, Read, Update, Delete) operations.
+- **Optimized Rust Binary:** Include a process that generates an optimized Rust binary as a GitHub Actions artifact that can be downloaded.
+- **README.md:** A file that clearly explains what the project does, its dependencies, how to run the program, and how GitHub Copilot was used.
+- **GitHub Actions:** A workflow file that tests, builds, and lints your Rust code.
+- **Video Demo:** A YouTube link in README.md showing a clear, concise walkthrough and demonstration of your CLI binary.
+
+## ✔️ GitHub Copilot Usage
+GitHub Copilot provided suggestions that accelerated development, including:
+- Generating efficient Rust syntax for database operations.
+- Structuring error handling patterns to improve code readability and reliability.
+- Offering boilerplate Rust functions for CRUD operations, reducing manual coding time. These contributions helped streamline development, especially for repetitive tasks and syntax checks.
+
 
 ## ✔️ Functionality and User Guide
 ### Prerequisites
@@ -34,12 +45,13 @@ Export the release folder to your path so you can run the CLI commands directly 
 ```bash
 export PATH=$PATH:$(pwd)/target/release
 ```
-### Using the Tool
-This tool supports four main commands:
+### SQLite Database (CRUD Operations)
+The tool supports full CRUD operations on the SQLite database:
 - **Create** (`-c`): Creates a new table.
-- **Load** (`-l`): Loads data from a CSV file into a specified table.
-- **Query** (`-q`): Executes an SQL query.
+- **Read** (`-r`): Reads and displays all data from a table.
+- **Update** (`-u`): Updates records in a specified table.
 - **Delete** (`-d`): Deletes a specified table.
+- **Load** (`-l`): Loads data from a CSV file into a specified table.
 
 Each command can be accessed with both its full name and its short alias.
 
@@ -49,29 +61,45 @@ For a quick overview of available commands, you can use:
 sqlite -h
 ```
 ![Commend Output](command.png)
-### Examples of Commands
+
+### Command Usage
 To create a new table, use the `-c` flag:
 ```bash
 sqlite -c name_age_table
 ```
-To load data from a CSV file into the table, use the -l flag and specify the table name and file path:
+To load data from a CSV file into the table, use the `-l` flag and specify the table name and file path:
 ```bash
 sqlite -l name_age_table ../data/sample_data.csv
 ```
-To execute a query on the table, use the -q flag:
+To read data from the table, use the `-r` flag:
 ```bash
-sqlite -q "SELECT * FROM name_age_table"
+sqlite -r name_age_table
 ```
-To delete a table, use the -d flag:
+To update a record in the table, use the `-u` flag, specifying the column, new value, and a condition:
+```bash
+sqlite -u name_age_table age 18 "name = 'Alice'"
+```
+To delete a table, use the `-d` flag:
 ```bash
 sqlite -d name_age_table
 ```
-![Examples Output](examples.png)
+![Examples Output](commands.png)
+
 ### Testing
-This project includes automated tests located in the tests/cli_tests.rs file. These tests verify the functionality of each command (Create, Load, Query, and Delete).
+This project includes automated tests located in the `tests/cli_tests.rs` file. These tests verify the functionality of each command (Create, Load, Read, Update, Delete).
 
 To run the tests, execute:
 ```bash
 cargo test
 ```
 ![Tests Output](tests.png)
+
+## ✔️ Optimized Rust Binary
+The project generates an optimized binary for production, compiled with:
+```bash
+cargo build --release
+```
+The binary is available for download as a GitHub Actions artifact: [Binary Artifact Download Link](https://github.com/nogibjj/Ailina_Aniwan_Individual_Project_2/actions/runs/11585801062/artifacts/2120972109)
+
+## ✔️ Video Demo
+[Click Here For YouTube Video Demo](https://www.youtube.com/watch?v=pGTLPDXGixA)
