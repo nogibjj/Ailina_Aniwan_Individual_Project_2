@@ -60,30 +60,34 @@ For a quick overview of available commands, you can use:
 ```bash
 sqlite -h
 ```
-![Commend Output](command.png)
+![Command Overview](photos/overview.png)
 
 ### Command Usage
 To create a new table, use the `-c` flag:
 ```bash
 sqlite -c name_age_table
 ```
+![Create](photos/create.png)
 To load data from a CSV file into the table, use the `-l` flag and specify the table name and file path:
 ```bash
 sqlite -l name_age_table ../data/sample_data.csv
 ```
+![Load](photos/load.png)
 To read data from the table, use the `-r` flag:
 ```bash
 sqlite -r name_age_table
 ```
+![Read](photos/read.png)
 To update a record in the table, use the `-u` flag, specifying the column, new value, and a condition:
 ```bash
 sqlite -u name_age_table age 18 "name = 'Alice'"
 ```
+![Update](photos/update.png)
 To delete a table, use the `-d` flag:
 ```bash
 sqlite -d name_age_table
 ```
-![Examples Output](commands.png)
+![Delete](photos/delete.png)
 
 ### Testing
 This project includes automated tests located in the `tests/cli_tests.rs` file. These tests verify the functionality of each command (Create, Load, Read, Update, Delete).
@@ -92,14 +96,14 @@ To run the tests, execute:
 ```bash
 cargo test
 ```
-![Tests Output](tests.png)
+![Tests Output](photos/test.png)
 
 ## ✔️ Optimized Rust Binary
 The project generates an optimized binary for production, compiled with:
 ```bash
 cargo build --release
 ```
-The binary is available for download as a GitHub Actions artifact: [Binary Artifact Download Link](https://github.com/nogibjj/Ailina_Aniwan_Individual_Project_2/actions/runs/11585801062/artifacts/2120972109)
+The binary is available for download as a GitHub Actions artifact: [Binary Artifact Download Link](https://github.com/nogibjj/Ailina_Aniwan_Individual_Project_2/actions/runs/11605004176/artifacts/2126347798)
 
 ## ✔️ Video Demo
 [Click Here For YouTube Video Demo](https://www.youtube.com/watch?v=pGTLPDXGixA)
