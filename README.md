@@ -1,4 +1,4 @@
-[![CI](https://github.com/nogibjj/Ailina_Aniwan_Mini_Project_7/actions/workflows/CI.yml/badge.svg)](https://github.com/nogibjj/Ailina_Aniwan_Mini_Project_7/actions/workflows/CI.yml)
+[![CI](https://github.com/nogibjj/Ailina_Aniwan_Individual_Project_2/actions/workflows/CI.yml/badge.svg)](https://github.com/nogibjj/Ailina_Aniwan_Individual_Project_2/actions/workflows/CI.yml)
 # IDS706 - Individual Project 2 - Ailina Aniwan
 
 ## Rust CLI Binary with SQLite
