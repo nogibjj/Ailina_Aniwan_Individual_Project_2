@@ -1,6 +1,6 @@
+use csv::ReaderBuilder;
 use rusqlite::{Connection, Result};
 use std::fs::File;
-use csv::ReaderBuilder;
 
 pub fn create_table(conn: &Connection, table: &str) -> Result<()> {
     let create_query = format!(
@@ -37,10 +37,7 @@ pub fn update_record(
     new_value: &str,
     condition: &str,
 ) -> Result<()> {
-    let update_query = format!(
-        "UPDATE {} SET {} = ?1 WHERE {}",
-        table, column, condition
-    );
+    let update_query = format!("UPDATE {} SET {} = ?1 WHERE {}", table, column, condition);
     conn.execute(&update_query, [new_value])?;
     println!("Record in table '{}' updated successfully.", table);
     Ok(())
@@ -53,13 +50,20 @@ pub fn delete_table(conn: &Connection, table: &str) -> Result<()> {
     Ok(())
 }
 
-pub fn load_data(conn: &Connection, table: &str, file_path: &str) -> Result<(), Box<dyn std::error::Error>> {
+pub fn load_data(
+    conn: &Connection,
+    table: &str,
+    file_path: &str,
+) -> Result<(), Box<dyn std::error::Error>> {
     let mut reader = ReaderBuilder::new().from_reader(File::open(file_path)?);
 
     for record in reader.records() {
         let record = record?;
         conn.execute(
-            &format!("INSERT INTO {} (name, age, city) VALUES (?1, ?2, ?3)", table),
+            &format!(
+                "INSERT INTO {} (name, age, city) VALUES (?1, ?2, ?3)",
+                table
+            ),
             &[&record[0], &record[1], &record[2]],
         )?;
     }

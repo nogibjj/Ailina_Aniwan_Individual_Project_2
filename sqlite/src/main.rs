@@ -1,6 +1,6 @@
 use clap::{Parser, Subcommand};
 use rusqlite::{Connection, Result};
-use sqlite::{create_table, read_table, update_record, delete_table, load_data};
+use sqlite::{create_table, delete_table, load_data, read_table, update_record};
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
@@ -74,10 +74,12 @@ fn main() -> Result<()> {
             table_name,
             file_path,
         } => {
-            println!("Loading data into table '{}' from '{}'", table_name, file_path);
+            println!(
+                "Loading data into table '{}' from '{}'",
+                table_name, file_path
+            );
             load_data(&conn, &table_name, &file_path).expect("Failed to load data");
         }
     }
     Ok(())
 }
-
