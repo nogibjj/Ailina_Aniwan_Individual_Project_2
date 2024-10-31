@@ -1,6 +1,6 @@
 use clap::{Parser, Subcommand};
 use rusqlite::{Connection, Result};
-use sqlite::*; // Import the functions from lib.rs
+use sqlite::{create_table, read_table, update_record, delete_table, load_data};
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
@@ -15,9 +15,18 @@ enum Commands {
     #[command(alias = "c", short_flag = 'c')]
     Create { table_name: String },
 
-    /// Execute a query
-    #[command(alias = "q", short_flag = 'q')]
-    Query { query: String },
+    /// Read data from a table
+    #[command(alias = "r", short_flag = 'r')]
+    Read { table_name: String },
+
+    /// Update a record in a table
+    #[command(alias = "u", short_flag = 'u')]
+    Update {
+        table_name: String,
+        column: String,
+        new_value: String,
+        condition: String,
+    },
 
     /// Delete a table
     #[command(alias = "d", short_flag = 'd')]
@@ -40,9 +49,22 @@ fn main() -> Result<()> {
             println!("Creating Table {}", table_name);
             create_table(&conn, &table_name).expect("Failed to create table");
         }
-        Commands::Query { query } => {
-            println!("Executing Query: {}", query);
-            execute_query(&conn, &query).expect("Failed to execute query");
+        Commands::Read { table_name } => {
+            println!("Reading data from Table {}", table_name);
+            read_table(&conn, &table_name).expect("Failed to read table data");
+        }
+        Commands::Update {
+            table_name,
+            column,
+            new_value,
+            condition,
+        } => {
+            println!(
+                "Updating table '{}' setting '{}' to '{}' where {}",
+                table_name, column, new_value, condition
+            );
+            update_record(&conn, &table_name, &column, &new_value, &condition)
+                .expect("Failed to update record");
         }
         Commands::Delete { table_name } => {
             println!("Deleting Table {}", table_name);
@@ -58,3 +80,4 @@ fn main() -> Result<()> {
     }
     Ok(())
 }
+
