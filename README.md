@@ -106,4 +106,4 @@ cargo build --release
 The binary is available for download as a GitHub Actions artifact: [Binary Artifact Download Link](https://github.com/nogibjj/Ailina_Aniwan_Individual_Project_2/actions/runs/11605004176/artifacts/2126347798)
 
 ## ✔️ Video Demo
-[Click Here For YouTube Video Demo](https://www.youtube.com/watch?v=pGTLPDXGixA)
+[Click Here For YouTube Video Demo](https://www.youtube.com/watch?v=HekhXQTseDc)
